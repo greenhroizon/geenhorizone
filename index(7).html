@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GreenHorizon Solar | Cut Your Electricity Bill by 70%</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET ─────────────────────────────── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;color:#374151;background:#f8fafc;overflow-x:hidden}
+
+/* ─── VARIABLES ─────────────────────────── */
+:root{
+  --g:#0a7f5a;
+  --gd:#065f46;
+  --gl:#e6f5ef;
+  --gold:#ffb400;
+  --goldd:#e09e00;
+  --goldbg:#fff8e6;
+  --dark:#111827;
+  --text:#374151;
+  --muted:#6b7280;
+  --bg:#f8fafc;
+  --white:#fff;
+  --border:#e5e7eb;
+  --sh:0 4px 20px rgba(0,0,0,.08);
+  --shm:0 8px 36px rgba(0,0,0,.13);
+}
+
+/* ─── HEADER ────────────────────────────── */
+header{
+  position:sticky;top:0;z-index:1000;
+  height:66px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 40px;gap:16px;
+  background:var(--white);
+  box-shadow:0 2px 12px rgba(0,0,0,.07);
+}
+.logo{display:flex;align-items:center;gap:9px;flex-shrink:0;text-decoration:none}
+.logo-sun{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--g),var(--gd));display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;box-shadow:0 2px 8px rgba(10,127,90,.35)}
+.logo h2{color:var(--g);font-size:1.2rem;font-weight:700;white-space:nowrap}
+nav{display:flex;align-items:center;gap:2px}
+nav a{color:var(--text);text-decoration:none;font-size:.82rem;font-weight:500;padding:7px 13px;border-radius:6px;white-space:nowrap;transition:background .2s,color .2s}
+nav a:hover{background:var(--gl);color:var(--g)}
+.hdr{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.btn-call-hdr{display:flex;align-items:center;gap:6px;background:var(--g);color:var(--white);padding:8px 16px;border-radius:8px;font-size:.8rem;font-weight:600;text-decoration:none;white-space:nowrap;box-shadow:0 3px 10px rgba(10,127,90,.3);transition:all .2s}
+.btn-call-hdr:hover{background:var(--gd);transform:translateY(-1px)}
+.btn-quote-hdr{background:var(--gold);color:var(--dark);border:none;padding:8px 16px;border-radius:8px;font-size:.8rem;font-weight:700;white-space:nowrap;cursor:pointer;box-shadow:0 3px 10px rgba(255,180,0,.3);transition:all .2s;font-family:'Poppins',sans-serif}
+.btn-quote-hdr:hover{background:var(--goldd);transform:translateY(-1px)}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:3px}
+.burger span{display:block;width:22px;height:2px;background:var(--dark);border-radius:2px;transition:all .3s}
+.mob-nav{display:none;flex-direction:column;position:fixed;top:66px;left:0;right:0;background:var(--white);border-top:2px solid var(--g);box-shadow:0 8px 24px rgba(0,0,0,.1);z-index:999}
+.mob-nav.open{display:flex}
+.mob-nav a{padding:14px 24px;font-size:.9rem;font-weight:500;text-decoration:none;color:var(--text);border-bottom:1px solid var(--border);transition:background .2s}
+.mob-nav a:hover{background:var(--gl);color:var(--g)}
+.mob-nav .mob-call{background:var(--g);color:var(--white)!important;font-weight:700;display:flex;align-items:center;gap:8px}
+
+/* ─── HERO ──────────────────────────────── */
+.hero{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:32px;padding:56px 48px;background:linear-gradient(135deg,var(--g) 0%,var(--gd) 100%);color:var(--white);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-100px;top:-100px;width:450px;height:450px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.07),transparent 65%);pointer-events:none}
+.hero::after{content:'';position:absolute;left:-60px;bottom:-60px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(255,180,0,.1),transparent 65%);pointer-events:none}
+.hero-text{max-width:520px;position:relative;z-index:2;flex:1 1 300px}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);padding:5px 14px;border-radius:20px;font-size:.72rem;font-weight:600;letter-spacing:1px;margin-bottom:18px}
+.eyebrow::before{content:'';width:7px;height:7px;border-radius:50%;background:#4ade80;animation:blink 2s ease infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.hero h1{font-size:clamp(1.9rem,4vw,3rem);font-weight:800;line-height:1.15;margin-bottom:14px;letter-spacing:-.5px}
+.hero h1 span{color:var(--gold)}
+.hero p{margin-bottom:18px;font-size:.97rem;opacity:.88;line-height:1.7;font-weight:300}
+.badges{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+.badge{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:5px 12px;border-radius:20px;font-size:.72rem;font-weight:500}
+.badge::before{content:'✔';color:var(--gold)}
+
+/* ─── FORM BOX ──────────────────────────── */
+.form-box{background:var(--white);color:var(--dark);padding:30px 26px;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.22);width:340px;flex-shrink:0;position:relative;z-index:2;border-top:4px solid var(--gold)}
+.form-tag{display:inline-block;background:var(--goldbg);color:var(--goldd);font-size:.65rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:4px;margin-bottom:8px}
+.form-box h3{font-size:1.1rem;font-weight:700;margin-bottom:3px;color:var(--dark)}
+.form-sub{font-size:.75rem;color:var(--muted);margin-bottom:18px}
+.form-sub b{color:var(--g)}
+.fg{margin-bottom:12px}
+.fg label{display:block;font-size:.68rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px}
+.fg input,.fg select{width:100%;padding:11px 13px;border:1.5px solid var(--border);border-radius:8px;font-family:'Poppins',sans-serif;font-size:.86rem;color:var(--dark);background:#fafafa;outline:none;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;appearance:none}
+.fg input::placeholder{color:#b5bec9}
+.fg input:focus,.fg select:focus{border-color:var(--g);background:var(--white);box-shadow:0 0 0 3px rgba(10,127,90,.1)}
+.fg select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;background-color:#fafafa;cursor:pointer}
+.btn-submit{width:100%;padding:13px;margin-top:4px;background:linear-gradient(135deg,var(--gold),var(--goldd));border:none;border-radius:9px;font-family:'Poppins',sans-serif;font-weight:700;font-size:.92rem;color:var(--dark);cursor:pointer;box-shadow:0 5px 18px rgba(255,180,0,.4);transition:all .25s}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(255,180,0,.55)}
+.btn-submit:disabled{opacity:.7;pointer-events:none;transform:none}
+#msg{font-size:.75rem;margin-top:9px;text-align:center;min-height:16px}
+.ok{color:var(--g);font-weight:600}
+.err{color:#ef4444}
+.privacy{text-align:center;font-size:.67rem;color:#b0b8c1;margin-top:7px}
+.privacy a{color:var(--g);text-decoration:underline;cursor:pointer}
+
+/* ─── SECTION BASE ──────────────────────── */
+.sec{padding:72px 48px}
+.sec-white{background:var(--white)}
+.sec-tint{background:var(--bg)}
+.sec-dark{background:var(--dark)}
+.sec-ey{display:block;text-align:center;font-size:.68rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--g);margin-bottom:8px}
+.sec-dark .sec-ey{color:#4ade80}
+.sec-title{text-align:center;font-size:clamp(1.55rem,3vw,2.2rem);font-weight:800;color:var(--dark);letter-spacing:-.3px;margin-bottom:10px}
+.sec-dark .sec-title{color:var(--white)}
+.sec-desc{text-align:center;color:var(--muted);font-size:.9rem;max-width:500px;margin:0 auto 44px;line-height:1.7}
+.sec-dark .sec-desc{color:rgba(255,255,255,.5)}
+
+/* ─── FEATURES ──────────────────────────── */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.feat-card{background:var(--white);padding:26px 22px;border-radius:12px;border:1px solid var(--border);box-shadow:var(--sh);text-align:center;transition:transform .3s,box-shadow .3s}
+.feat-card:hover{transform:translateY(-5px);box-shadow:var(--shm);border-color:rgba(10,127,90,.2)}
+.feat-icon{font-size:1.9rem;display:block;margin-bottom:12px}
+.feat-card h4{font-size:.9rem;font-weight:700;color:var(--dark);margin-bottom:6px}
+.feat-card p{font-size:.79rem;color:var(--muted);line-height:1.65}
+
+/* ─── FACTS / TRUST ─────────────────────── */
+.trust-inner{max-width:1020px;margin:0 auto}
+.stats-strip{display:grid;grid-template-columns:repeat(4,1fr);background:linear-gradient(135deg,var(--g),var(--gd));border-radius:16px;overflow:hidden;margin-bottom:32px}
+.stat-item{padding:28px 20px;text-align:center;border-right:1px solid rgba(255,255,255,.12)}
+.stat-item:last-child{border-right:none}
+.stat-num{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;color:var(--gold);line-height:1}
+.stat-label{font-size:.72rem;color:rgba(255,255,255,.7);margin-top:6px;line-height:1.5}
+.fact-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px}
+.fact-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:24px;display:flex;gap:16px;align-items:flex-start;transition:border-color .2s,box-shadow .2s}
+.fact-card:hover{border-color:rgba(10,127,90,.3);box-shadow:var(--sh)}
+.fact-icon{width:44px;height:44px;border-radius:10px;background:var(--gl);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.fact-card h4{font-size:.88rem;font-weight:700;color:var(--dark);margin-bottom:5px}
+.fact-card p{font-size:.79rem;color:var(--muted);line-height:1.6}
+.fact-cta{background:linear-gradient(135deg,var(--goldbg),#fff3cc);border:2px solid var(--gold);border-radius:16px;padding:32px 36px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.fact-cta h3{font-size:1.1rem;font-weight:800;color:var(--dark);margin-bottom:6px}
+.fact-cta p{font-size:.83rem;color:var(--text);line-height:1.6}
+.fact-cta p b{color:var(--g)}
+.cta-pair{display:flex;gap:10px;flex-wrap:wrap}
+.btn-green{background:var(--g);color:var(--white);border:none;padding:13px 24px;border-radius:9px;font-family:'Poppins',sans-serif;font-weight:700;font-size:.85rem;cursor:pointer;transition:all .2s;white-space:nowrap;box-shadow:0 4px 14px rgba(10,127,90,.35);text-decoration:none;display:inline-block}
+.btn-green:hover{background:var(--gd);transform:translateY(-2px)}
+.btn-gold-ol{background:transparent;color:var(--goldd);border:2px solid var(--goldd);padding:11px 22px;border-radius:9px;font-family:'Poppins',sans-serif;font-weight:700;font-size:.85rem;cursor:pointer;transition:all .2s;white-space:nowrap;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn-gold-ol:hover{background:var(--goldbg);transform:translateY(-2px)}
+
+/* ─── HOW IT WORKS ──────────────────────── */
+.steps-wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:8px}
+.step{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:28px 22px;text-align:center;transition:background .3s,transform .3s}
+.step:hover{background:rgba(255,255,255,.1);transform:translateY(-4px)}
+.step-num{width:52px;height:52px;border-radius:50%;background:var(--gold);color:var(--dark);display:flex;align-items:center;justify-content:center;font-size:1.3rem;font-weight:800;margin:0 auto 16px;box-shadow:0 4px 16px rgba(255,180,0,.4)}
+.step h4{font-size:.9rem;font-weight:700;color:var(--white);margin-bottom:8px}
+.step p{font-size:.79rem;color:rgba(255,255,255,.55);line-height:1.65}
+
+/* ─── REVIEWS CAROUSEL ──────────────────── */
+#reviews{padding:72px 0}
+.rev-wrap{max-width:1100px;margin:0 auto;padding:0 48px}
+.car-outer{overflow:hidden;margin-top:40px}
+.car-track{display:flex;gap:22px;transition:transform .7s cubic-bezier(.4,0,.2,1);will-change:transform}
+.t-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:26px;flex-shrink:0;box-shadow:var(--sh);transition:transform .25s,box-shadow .25s}
+.t-card:hover{transform:translateY(-4px);box-shadow:var(--shm)}
+.t-quote{font-size:2.8rem;color:var(--gold);opacity:.25;font-family:Georgia,serif;line-height:.65;margin-bottom:8px}
+.t-stars{color:var(--gold);font-size:.8rem;letter-spacing:2px;margin-bottom:11px}
+.t-text{font-size:.84rem;color:var(--text);line-height:1.7;margin-bottom:20px;font-style:italic}
+.t-author{display:flex;align-items:center;gap:11px}
+.t-av{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--g),#4ade80);display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:800;color:var(--white);flex-shrink:0}
+.t-name{font-weight:700;font-size:.84rem;color:var(--dark)}
+.t-loc{font-size:.71rem;color:var(--muted);margin-top:2px}
+.t-badge{display:inline-block;background:#f0fdf4;color:#16a34a;font-size:.62rem;font-weight:700;padding:2px 8px;border-radius:4px;border:1px solid #bbf7d0;margin-top:12px}
+.car-ctrl{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:32px}
+.car-btn{width:42px;height:42px;border-radius:50%;background:var(--white);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1rem;color:var(--dark);box-shadow:var(--sh);transition:all .2s}
+.car-btn:hover{background:var(--g);border-color:var(--g);color:var(--white)}
+.car-dots{display:flex;gap:7px;align-items:center}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--border);border:none;cursor:pointer;padding:0;transition:all .3s}
+.dot.on{background:var(--g);width:20px;border-radius:4px}
+
+/* ─── BOTTOM CTA ────────────────────────── */
+.btm-cta{background:linear-gradient(135deg,var(--g),var(--gd));padding:60px 48px;text-align:center;color:var(--white);position:relative;overflow:hidden}
+.btm-cta::before{content:'';position:absolute;right:-80px;top:-80px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.06),transparent 65%);pointer-events:none}
+.btm-cta h2{font-size:clamp(1.5rem,3vw,2.3rem);font-weight:800;margin-bottom:10px}
+.btm-cta p{font-size:.92rem;opacity:.8;margin-bottom:28px;max-width:460px;margin-left:auto;margin-right:auto}
+.btm-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-gold-solid{background:var(--gold);color:var(--dark);border:none;padding:14px 30px;border-radius:9px;font-family:'Poppins',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .2s;box-shadow:0 5px 18px rgba(255,180,0,.4);text-decoration:none;display:inline-block}
+.btn-gold-solid:hover{background:var(--goldd);transform:translateY(-2px)}
+.btn-white-ol{background:transparent;color:var(--white);padding:14px 30px;border-radius:9px;font-family:'Poppins',sans-serif;font-weight:600;font-size:.9rem;border:2px solid rgba(255,255,255,.4);cursor:pointer;transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;gap:7px}
+.btn-white-ol:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.7)}
+
+/* ─── FOOTER ────────────────────────────── */
+footer{background:#0d1117;color:rgba(255,255,255,.45);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+footer p{font-size:.75rem}
+.foot-links{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.foot-links a{color:var(--gold);text-decoration:none;font-size:.75rem}
+.foot-links a.muted{color:rgba(255,255,255,.4);text-decoration:underline}
+
+/* ─── STICKY CALL ───────────────────────── */
+.sticky-call{position:fixed;bottom:22px;right:22px;z-index:998;display:flex;align-items:center;gap:8px;background:var(--g);color:var(--white);padding:12px 20px;border-radius:50px;font-weight:700;font-size:.84rem;text-decoration:none;box-shadow:0 6px 22px rgba(10,127,90,.5);transition:all .2s;animation:fl 3s ease-in-out infinite}
+.sticky-call:hover{background:var(--gd);transform:translateY(-3px) scale(1.02)!important}
+@keyframes fl{0%,100%{box-shadow:0 6px 22px rgba(10,127,90,.5)}50%{box-shadow:0 10px 32px rgba(10,127,90,.7)}}
+.s-ic{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+
+/* ─── PRIVACY MODAL ─────────────────────── */
+.pm-overlay{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.65);backdrop-filter:blur(4px);overflow-y:auto;padding:40px 20px}
+.pm-overlay.open{display:block}
+.pm-box{max-width:680px;margin:0 auto;background:var(--white);border-radius:16px;padding:44px 40px;position:relative;box-shadow:0 24px 80px rgba(0,0,0,.25)}
+.pm-close{position:absolute;top:16px;right:20px;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--muted);line-height:1}
+.pm-head{display:flex;align-items:center;gap:10px;margin-bottom:28px;padding-bottom:20px;border-bottom:2px solid #f3f4f6}
+.pm-body{font-size:.86rem;color:var(--text);line-height:1.75}
+.pm-body h3{font-size:.95rem;font-weight:700;color:var(--dark);margin:0 0 8px}
+.pm-body p{margin-bottom:18px}
+.pm-body ul{margin:0 0 18px 20px;display:flex;flex-direction:column;gap:6px}
+
+/* ─── SCROLL REVEAL ─────────────────────── */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
+.rv.show{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+/* ─── RESPONSIVE ────────────────────────── */
+@media(max-width:900px){
+  header{padding:0 20px}
+  nav,  .hdr .btn-call-hdr{display:none}
+  .burger{display:flex}
+  .hero{padding:44px 28px}
+  .form-box{width:100%;max-width:100%}
+  .sec{padding:56px 28px}
+  .rev-wrap{padding:0 28px}
+  .btm-cta{padding:52px 28px}
+  footer{padding:18px 28px}
+  .feat-grid{grid-template-columns:1fr 1fr}
+  .stats-strip{grid-template-columns:1fr 1fr}
+  .fact-grid{grid-template-columns:1fr}
+  .steps-wrap{grid-template-columns:1fr 1fr}
+  .fact-cta{flex-direction:column;text-align:center}
+  .cta-pair{justify-content:center}
+}
+@media(max-width:600px){
+  .hero{padding:36px 20px}
+  .hero h1{font-size:1.75rem}
+  .sec{padding:48px 20px}
+  .rev-wrap{padding:0 20px}
+  .feat-grid{grid-template-columns:1fr}
+  .steps-wrap{grid-template-columns:1fr}
+  .stats-strip{grid-template-columns:1fr 1fr}
+  .btm-cta{padding:44px 20px}
+  .btm-btns{flex-direction:column;align-items:center}
+  footer{flex-direction:column;text-align:center;padding:16px 20px}
+  .fact-cta{padding:24px 20px}
+  .pm-box{padding:32px 20px}
+  .sticky-call .call-txt{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a class="logo" href="#">
+    <div class="logo-sun">☀</div>
+    <h2>GreenHorizon</h2>
+  </a>
+  <nav>
+    <a href="#features">Why Us</a>
+    <a href="#facts">Benefits</a>
+    <a href="#steps">How It Works</a>
+    <a href="#reviews">Reviews</a>
+  </nav>
+  <div class="hdr">
+    <a href="tel:+919009026829" class="btn-call-hdr">📞 +91 90090 26829</a>
+    <button class="btn-quote-hdr" onclick="scrollToForm()">Get Free Quote</button>
+    <div class="burger" id="burger" onclick="toggleMob()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mob-nav" id="mobNav">
+  <a href="#features" onclick="closeMob()">Why Choose Us</a>
+  <a href="#facts"    onclick="closeMob()">Benefits &amp; Facts</a>
+  <a href="#steps"    onclick="closeMob()">How It Works</a>
+  <a href="#reviews"  onclick="closeMob()">Customer Reviews</a>
+  <a href="tel:+919009026829" class="mob-call">📞 Call: +91 90090 26829</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <div class="eyebrow">Trusted Solar Brand · Since 2012</div>
+    <h1>Cut Your Electricity<br>Bill by <span>70%</span> with Solar</h1>
+    <p>Get Free Consultation from Us. Professional solar installation for homes &amp; businesses — with government subsidy support included.</p>
+    <div class="badges">
+      <span class="badge">Govt Subsidy Assistance</span>
+      <span class="badge">25-Year Warranty</span>
+      <span class="badge">Fast Installation</span>
+      <span class="badge">EMI Available</span>
+    </div>
+  </div>
+
+  <div class="form-box" id="form">
+    <div class="form-tag">☀ Free Consultation</div>
+    <h3>Get Free Consultation from Us</h3>
+    <p class="form-sub">Our expert calls you within <b>2 hours</b> — no cost, no obligation.</p>
+    <form id="leadForm" onsubmit="doSubmit(event)" novalidate>
+      <div class="fg">
+        <label>Full Name</label>
+        <input type="text" id="f-name" placeholder="e.g. Rajesh Sharma" autocomplete="name">
+      </div>
+      <div class="fg">
+        <label>Contact Number</label>
+        <input type="tel" id="f-phone" placeholder="10-digit mobile number" maxlength="10" autocomplete="tel">
+      </div>
+      <div class="fg">
+        <label>Monthly Electricity Bill</label>
+        <select id="f-bill">
+          <option value="">Select range</option>
+          <option>₹1,000 – ₹3,000</option>
+          <option>₹3,000 – ₹7,000</option>
+          <option>₹7,000+</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label>Property Type</label>
+        <select id="f-type">
+          <option value="">Select type</option>
+          <option>Home / Villa</option>
+          <option>Business / Office</option>
+          <option>Factory / Warehouse</option>
+          <option>Farm / Agriculture</option>
+        </select>
+      </div>
+      <button type="submit" class="btn-submit" id="submitBtn">☀ Get Free Quote Now</button>
+    </form>
+    <p id="msg"></p>
+    <p class="privacy">🔒 Your info is private. By submitting you agree to our <a onclick="openPrivacy()">Privacy Policy</a>.</p>
+  </div>
+</section>
+
+<!-- WHY CHOOSE -->
+<section class="sec sec-tint" id="features">
+  <span class="sec-ey rv">Why GreenHorizon</span>
+  <h2 class="sec-title rv d1">Why Choose GreenHorizon?</h2>
+  <p class="sec-desc rv d2">Over 4,800 happy customers trust us for clean, professional, subsidy-backed solar installations.</p>
+  <div class="feat-grid">
+    <div class="feat-card rv d1"><span class="feat-icon">⚡</span><h4>Save up to 70% on Bills</h4><p>Most customers cut monthly bills from ₹8,000 down to under ₹500 from day one.</p></div>
+    <div class="feat-card rv d2"><span class="feat-icon">🏡</span><h4>Custom Roof Design</h4><p>Every system engineered for your specific roof size, orientation, and usage pattern.</p></div>
+    <div class="feat-card rv d3"><span class="feat-icon">🔧</span><h4>Complete Installation Support</h4><p>From site survey to commissioning — our certified team handles absolutely everything.</p></div>
+    <div class="feat-card rv d1"><span class="feat-icon">💰</span><h4>Govt Subsidy Help</h4><p>We file PM Surya Ghar Yojana paperwork on your behalf. You just collect the savings.</p></div>
+    <div class="feat-card rv d2"><span class="feat-icon">📞</span><h4>Lifetime Support</h4><p>AMC plans, quarterly cleaning, and 24×7 on-call technical support — always there for you.</p></div>
+    <div class="feat-card rv d3"><span class="feat-icon">📈</span><h4>High ROI Investment</h4><p>Full payback in 3–5 years, then 20+ years of free electricity. Best investment you'll make.</p></div>
+  </div>
+</section>
+
+<!-- FACTS / TRUST -->
+<section class="sec sec-white" id="facts">
+  <span class="sec-ey rv">Facts &amp; Transparency</span>
+  <h2 class="sec-title rv d1">What You Should Know Before Going Solar</h2>
+  <p class="sec-desc rv d2">We'd rather give you honest information than push you into a decision.</p>
+  <div class="trust-inner">
+    <div class="stats-strip rv">
+      <div class="stat-item"><div class="stat-num">300+</div><div class="stat-label">Sunny Days/Year in North India<br><span style="font-size:.6rem;opacity:.6">(IMD Data)</span></div></div>
+      <div class="stat-item"><div class="stat-num">3–6 Yrs</div><div class="stat-label">Typical Payback Period<br><span style="font-size:.6rem;opacity:.6">(MNRE Published Range)</span></div></div>
+      <div class="stat-item"><div class="stat-num">Up to 40%</div><div class="stat-label">Central Govt Subsidy<br><span style="font-size:.6rem;opacity:.6">(PM Surya Ghar Yojana)</span></div></div>
+      <div class="stat-item"><div class="stat-num">25 Yrs</div><div class="stat-label">Panel Warranty<br><span style="font-size:.6rem;opacity:.6">(Tier-1 Manufacturer Standard)</span></div></div>
+    </div>
+    <div class="fact-grid rv">
+      <div class="fact-card"><div class="fact-icon">🏛️</div><div><h4>Government Subsidy — What's Actually Available</h4><p>Under <strong>PM Surya Ghar Muft Bijli Yojana</strong> (launched Feb 2024), residential consumers can claim up to ₹78,000 for systems up to 3 kW. We assist with complete portal registration and documentation.</p></div></div>
+      <div class="fact-card"><div class="fact-icon">☁️</div><div><h4>How Solar Performs on Cloudy Days</h4><p>Solar panels work on diffuse light, not just direct sunlight. On overcast days, a well-installed system typically generates <strong>40–60% of peak output</strong>. Delhi NCR &amp; Haryana average 4.5–5.5 peak sun hours daily (IMD data).</p></div></div>
+      <div class="fact-card"><div class="fact-icon">🔧</div><div><h4>Warranties: What They Cover &amp; What They Don't</h4><p>Tier-1 panels carry a <strong>25-year performance warranty</strong> guaranteeing at least 80% output at end of life. Inverters: 5–10 years. Physical damage from weather is covered under home insurance, not the panel warranty.</p></div></div>
+      <div class="fact-card"><div class="fact-icon">📐</div><div><h4>Not Every Roof Is Ideal — Here's What Matters</h4><p>Solar works best on south/west-facing RCC rooftops with minimal shading 9am–4pm. Our engineer assesses this honestly during the <strong>free site survey</strong>. We won't recommend a system if your roof isn't suitable.</p></div></div>
+      <div class="fact-card"><div class="fact-icon">📋</div><div><h4>Net Metering — Selling Power Back to the Grid</h4><p>Haryana (DHBVN/UHBVN) and Delhi (BSES/BYPL/TPDDL) support net metering. Excess units are credited on your next bill. Application takes 15–30 days post-commissioning — we handle the entire process.</p></div></div>
+      <div class="fact-card"><div class="fact-icon">⏱️</div><div><h4>Realistic Installation Timeline</h4><p>Physical installation takes <strong>1–2 working days</strong> for a home system. The complete process — survey, design, procurement, installation, net meter — typically takes <strong>2–4 weeks</strong>. We give a clear schedule upfront.</p></div></div>
+    </div>
+    <div class="fact-cta rv">
+      <div><h3>Want numbers specific to your home or business?</h3><p>Our engineer visits, measures your roof, checks your bills, and gives you an honest estimate — exact savings, subsidy amount, and payback period. <b>No obligation to proceed.</b></p></div>
+      <div class="cta-pair">
+        <button class="btn-green" onclick="scrollToForm()">Book Free Site Survey</button>
+        <a href="tel:+919009026829" class="btn-gold-ol">📞 Talk to an Expert</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="sec sec-dark" id="steps">
+  <span class="sec-ey rv">Simple 4-Step Process</span>
+  <h2 class="sec-title rv d1">How It Works</h2>
+  <p class="sec-desc rv d2">From your first enquiry to your first saved rupee — we make going solar completely effortless.</p>
+  <div class="steps-wrap">
+    <div class="step rv d1"><div class="step-num">1</div><h4>Submit Your Details</h4><p>Fill the quick form with your name, number, and property type. Takes under 30 seconds.</p></div>
+    <div class="step rv d2"><div class="step-num">2</div><h4>Free Consultation &amp; Site Check</h4><p>Our expert calls within 2 hours, then visits for a free roof survey and custom system design.</p></div>
+    <div class="step rv d1"><div class="step-num">3</div><h4>Installation in 1–3 Days</h4><p>Our certified team installs your system cleanly and quickly. Net meter application included.</p></div>
+    <div class="step rv d2"><div class="step-num">4</div><h4>Start Saving Instantly</h4><p>System goes live. Monitoring app activated. Watch your bills drop from the very first month.</p></div>
+  </div>
+</section>
+
+<!-- REVIEWS CAROUSEL -->
+<section id="reviews" class="sec-tint">
+  <div class="rev-wrap">
+    <span class="sec-ey rv" style="display:block;text-align:center">4,800+ Happy Customers</span>
+    <h2 class="sec-title rv d1">What Our Customers Say</h2>
+    <p class="sec-desc rv d2">Real reviews from real customers across Delhi NCR and Haryana.</p>
+    <div class="car-outer rv"><div class="car-track" id="carTrack"></div></div>
+    <div class="car-ctrl">
+      <button class="car-btn" onclick="carMove(-1)" aria-label="Previous">&#8592;</button>
+      <div class="car-dots" id="carDots"></div>
+      <button class="car-btn" onclick="carMove(1)"  aria-label="Next">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<section class="btm-cta">
+  <h2 class="rv">Still Thinking? Get a Free Expert Call.</h2>
+  <p class="rv d1">No pressure. No cost. Just real numbers for your home or business.</p>
+  <div class="btm-btns rv d2">
+    <button class="btn-gold-solid" onclick="scrollToForm()">☀ Get Free Consultation Now</button>
+    <a href="tel:+919009026829" class="btn-white-ol">📞 Call Now: +91 90090 26829</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 GreenHorizon Solar. All rights reserved.</p>
+  <div class="foot-links">
+    <a href="tel:+919009026829">📞 +91 90090 26829</a>
+    <a class="muted" onclick="openPrivacy()" style="cursor:pointer">Privacy Policy</a>
+  </div>
+</footer>
+
+<!-- STICKY CALL -->
+<a href="tel:+919009026829" class="sticky-call">
+  <div class="s-ic">📞</div>
+  <span class="call-txt">Call Now</span>
+</a>
+
+<!-- PRIVACY MODAL -->
+<div class="pm-overlay" id="privacyModal" onclick="if(event.target===this)closePrivacy()">
+  <div class="pm-box">
+    <button class="pm-close" onclick="closePrivacy()">✕</button>
+    <div class="pm-head">
+      <div class="logo-sun">☀</div>
+      <div>
+        <h2 style="font-size:1.2rem;font-weight:800;color:#111827;margin:0">Privacy Policy</h2>
+        <p style="font-size:.72rem;color:#6b7280;margin:2px 0 0">GreenHorizon Solar · Last updated: March 2026</p>
+      </div>
+    </div>
+    <div class="pm-body">
+      <h3>1. Information We Collect</h3>
+      <p>When you fill out our consultation form, we collect your full name, mobile number, monthly electricity bill range, and property type. We do not collect payment information or government identity details through this website.</p>
+      <h3>2. How We Use Your Information</h3>
+      <p>Your information is used solely to contact you for your requested free solar consultation, provide a customised quote, and schedule a free site survey. We will never sell your data or share it with third parties.</p>
+      <h3>3. Data Storage</h3>
+      <p>Form submissions are stored securely in a Google Sheets database accessible only to authorised GreenHorizon staff. Google's infrastructure is ISO 27001 certified.</p>
+      <h3>4. Your Rights</h3>
+      <p>You have the right to request deletion of your data at any time. Call us at <strong>+91 90090 26829</strong> and we will remove your information within 7 working days.</p>
+      <h3>5. Contact</h3>
+      <p style="margin-bottom:28px">📞 <a href="tel:+919009026829" style="color:#0a7f5a">+91 90090 26829</a><br>📍 GreenHorizon Solar Pvt. Ltd., Sonipat, Haryana, India</p>
+      <button onclick="closePrivacy()" style="width:100%;padding:13px;background:linear-gradient(135deg,#0a7f5a,#065f46);border:none;border-radius:9px;font-family:'Poppins',sans-serif;font-weight:700;font-size:.9rem;color:#fff;cursor:pointer">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════
+   GOOGLE SHEETS URL
+═══════════════════════════════════════ */
+const GS_URL = 'https://script.google.com/macros/s/AKfycbyjY1bB9n7D-UOIXXfiNIaQFs3vxUzpboQtItKNdPkPld64a-K0gj52kMn4Sm5yc6h6/exec';
+
+/* ═══════════════════════════════════════
+   SEND TO SHEETS — single GET request
+   Apps Script reads via e.parameter.xxx
+═══════════════════════════════════════ */
+function sendToSheets(data) {
+  var qs = Object.keys(data).map(function(k) {
+    return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]);
+  }).join('&');
+  var img = new Image();
+  img.src = GS_URL + '?' + qs;
+}
+
+/* ═══════════════════════════════════════
+   FORM — phone digits only
+═══════════════════════════════════════ */
+document.getElementById('f-phone').addEventListener('input', function() {
+  this.value = this.value.replace(/\D/g, '').slice(0, 10);
+});
+
+/* ═══════════════════════════════════════
+   FORM SUBMIT
+═══════════════════════════════════════ */
+function doSubmit(e) {
+  e.preventDefault();
+
+  var name  = document.getElementById('f-name').value.trim();
+  var phone = document.getElementById('f-phone').value.trim();
+  var bill  = document.getElementById('f-bill').value;
+  var type  = document.getElementById('f-type').value;
+  var msg   = document.getElementById('msg');
+  var btn   = document.getElementById('submitBtn');
+
+  // Validate
+  if (!name)              { msg.innerHTML = '<span class="err">⚠ Please enter your name.</span>';         return; }
+  if (phone.length !== 10){ msg.innerHTML = '<span class="err">⚠ Enter a valid 10-digit number.</span>'; return; }
+  if (!bill)              { msg.innerHTML = '<span class="err">⚠ Please select your bill range.</span>'; return; }
+  if (!type)              { msg.innerHTML = '<span class="err">⚠ Please select property type.</span>';   return; }
+
+  // UI: loading state
+  btn.textContent = '⏳ Submitting…';
+  btn.disabled    = true;
+  msg.innerHTML   = '';
+
+  // Timestamp in IST
+  var ts = new Date().toLocaleString('en-IN', {
+    timeZone:'Asia/Kolkata', day:'2-digit', month:'2-digit',
+    year:'numeric', hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:true
+  });
+
+  // Send to Google Sheets
+  sendToSheets({
+    timestamp    : ts,
+    name         : name,
+    phone        : phone,
+    bill         : bill,
+    property_type: type
+  });
+
+  // Redirect to thank you page after 800ms
+  setTimeout(function() {
+    window.location.href = 'thankyou.html?name=' + encodeURIComponent(name) + '&phone=' + encodeURIComponent(phone);
+  }, 800);
+}
+
+/* ═══════════════════════════════════════
+   REVIEWS DATA
+═══════════════════════════════════════ */
+var REVIEWS = [
+  {n:'Rohit Sharma',  l:'Rohini, Delhi',   s:'5 kWp',  t:'Saved ₹4,000/month! Team was professional and cleaned up perfectly. My colony now has 8 more GreenHorizon installs because of me!',           i:'RS'},
+  {n:'Amit Verma',    l:'Gurugram',        s:'8 kWp',  t:'Smooth installation end to end. They handled all DISCOM paperwork. Office bill dropped from ₹18K to ₹2,100 per month. Incredible ROI!',       i:'AV'},
+  {n:'Neha Gupta',    l:'Noida',           s:'3 kWp',  t:'Best home investment ever. Team was quick, clean, and knowledgeable. My electricity bill is basically zero now. Highly recommend!',             i:'NG'},
+  {n:'Pooja Singh',   l:'Faridabad',       s:'4 kWp',  t:'Bill reduced from ₹7,500 to just ₹380. GreenHorizon got ₹78,000 subsidy credited directly to my account. Absolutely fantastic!',              i:'PS'},
+  {n:'Karan Mehta',   l:'Sonipat',         s:'10 kWp', t:'Professional team, premium panels, and a live monitoring app. I check it every morning — seeing ₹250 generated before breakfast is great!',    i:'KM'},
+  {n:'Ankit Jain',    l:'Panipat',         s:'3 kWp',  t:'Quick service, transparent pricing, real results. Zero hidden costs. Already referred 3 friends who all got their systems installed.',          i:'AJ'},
+  {n:'Rahul Khanna',  l:'Dwarka, Delhi',   s:'6 kWp',  t:'Installation done in a single day, super clean. Battery backup works perfectly through load shedding. No power cuts for 14 months now!',      i:'RK'},
+  {n:'Deepak Yadav',  l:'Bahadurgarh',     s:'5 kWp',  t:'System working perfectly for 18 months. Not a single issue. Annual maintenance visit was thorough, on time, and free of charge.',              i:'DY'},
+  {n:'Suresh Patel',  l:'Greater Noida',   s:'7 kWp',  t:'Recovered my investment in under 4 years. Now generating ₹6,500 worth of electricity free every single month. Life-changing!',                i:'SP'},
+  {n:'Vikas Arora',   l:'Rohtak',          s:'4 kWp',  t:'Very trustworthy company. They were honest about the right system size and did not upsell me. That honesty alone made me a loyal customer.',   i:'VA'},
+  {n:'Manish Kumar',  l:'Ghaziabad',       s:'5 kWp',  t:'Excellent experience end-to-end. Subsidy credited, net meter installed, monitoring app live — they handled every single thing themselves.',     i:'MK'},
+  {n:'Rajesh Kumar',  l:'Karnal',          s:'8 kWp',  t:'They applied for my subsidy and got ₹94,500 credited without me doing anything. System saved ₹6,800 last month alone. Worth every paisa!',    i:'RK2'}
+];
+
+/* ═══════════════════════════════════════
+   CAROUSEL
+═══════════════════════════════════════ */
+var carCur = 0, carVis = 3, carTimer;
+
+function carCount() {
+  var w = window.innerWidth;
+  return w < 540 ? 1 : w < 900 ? 2 : 3;
+}
+
+function carBuild() {
+  carVis = carCount();
+  var track = document.getElementById('carTrack');
+  var outer = document.querySelector('.car-outer');
+  var gap   = 22;
+  var cw    = (outer.offsetWidth - gap * (carVis - 1)) / carVis;
+
+  track.innerHTML = '';
+  REVIEWS.forEach(function(r) {
+    var d = document.createElement('div');
+    d.className   = 't-card';
+    d.style.width = cw + 'px';
+    d.innerHTML   =
+      '<div class="t-quote">\u201c</div>' +
+      '<div class="t-stars">\u2605\u2605\u2605\u2605\u2605</div>' +
+      '<p class="t-text">' + r.t + '</p>' +
+      '<div class="t-author">' +
+        '<div class="t-av">' + r.i + '</div>' +
+        '<div><div class="t-name">' + r.n + '</div><div class="t-loc">' + r.l + ' \u00b7 ' + r.s + '</div></div>' +
+      '</div>' +
+      '<span class="t-badge">\u2714 Verified Customer</span>';
+    track.appendChild(d);
+  });
+
+  carDotsBuild();
+  carGo(0);
+}
+
+function carDotsBuild() {
+  var el = document.getElementById('carDots');
+  el.innerHTML = '';
+  var pages = REVIEWS.length - carVis + 1;
+  for (var i = 0; i < pages; i++) {
+    var b = document.createElement('button');
+    b.className = 'dot' + (i === 0 ? ' on' : '');
+    b.setAttribute('data-i', i);
+    b.addEventListener('click', function() { carGo(+this.getAttribute('data-i')); carReset(); });
+    el.appendChild(b);
+  }
+}
+
+function carGo(idx) {
+  var max   = REVIEWS.length - carVis;
+  carCur    = Math.max(0, Math.min(idx, max));
+  var outer = document.querySelector('.car-outer');
+  var gap   = 22;
+  var cw    = (outer.offsetWidth - gap * (carVis - 1)) / carVis;
+  document.getElementById('carTrack').style.transform = 'translateX(-' + (carCur * (cw + gap)) + 'px)';
+  document.querySelectorAll('.dot').forEach(function(d, i) { d.classList.toggle('on', i === carCur); });
+}
+
+function carMove(dir) { carGo(carCur + dir); carReset(); }
+
+function carStart() {
+  carTimer = setInterval(function() {
+    carGo(carCur >= REVIEWS.length - carVis ? 0 : carCur + 1);
+  }, 5500);
+}
+function carReset() { clearInterval(carTimer); carStart(); }
+
+window.addEventListener('resize', function() { carBuild(); });
+carBuild();
+carStart();
+
+/* ═══════════════════════════════════════
+   HELPERS
+═══════════════════════════════════════ */
+function scrollToForm() { document.getElementById('form').scrollIntoView({behavior:'smooth'}); }
+function toggleMob()    { document.getElementById('mobNav').classList.toggle('open'); }
+function closeMob()     { document.getElementById('mobNav').classList.remove('open'); }
+function openPrivacy()  { document.getElementById('privacyModal').classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closePrivacy() { document.getElementById('privacyModal').classList.remove('open'); document.body.style.overflow = ''; }
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closePrivacy(); });
+
+/* ═══════════════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════════════ */
+var ro = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('show'); });
+}, {threshold: 0.1});
+document.querySelectorAll('.rv').forEach(function(el) { ro.observe(el); });
+</script>
+</body>
+</html>
